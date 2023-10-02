@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>CNIT 133 Homework 2</title>
+        <meta name="description" content="Homework 3 for JavaScript, jQuery, AJAX course at CCSF">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script>
+            function calculateGrade() {
+                const homeworkAvg = document.getElementById('homeworkAvg').value;
+                const midtermExam = document.getElementById('midtermExam').value;
+                const finalExam = document.getElementById('finalExam').value;
+                const participation = document.getElementById('participation').value;
+                const results = document.getElementById('result');
+
+                // Validate input
+                if (isValidInput(homeworkAvg) && isValidInput(midtermExam) &&
+                    isValidInput(finalExam) && isValidInput(participation)) {
+
+                    const finalAverage = (0.5 * homeworkAvg) + (0.2 * midtermExam) +
+                                        (0.2 * finalExam) + (0.1 * participation);
+
+                    const grade = getLetterGrade(Math.round(finalAverage));
+                    const message = grade >= 'D' ? "Student must retake the course" : "";
+
+                    results.innerHTML = `Final Average: ${Math.round(finalAverage)}<br>
+                                        Letter Grade: ${grade}<br>${message}`;
+                } else {
+                    resultDiv.textContent = 'Error: Please enter valid numbers between 0 and 100 for all grade components.';
+                }
+            }
+
+            function isValidInput(input) {
+                return !Number.isNaN(input) && input >= 0 && input <= 100;
+            }
+
+            function getLetterGrade(average) {
+                switch (true) {
+                    case average >= 90:
+                        return 'A';
+                    case average >= 80:
+                        return 'B';
+                    case average >= 70:
+                        return 'C';
+                    case average >= 60:
+                        return 'D';
+                    default:
+                        return 'F';
+                }
+            }
+
+        </script>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+            }
+            form {
+                max-width: 400px;
+                margin: auto;
+            }
+            label {
+                display: block;
+                margin-top: 10px;
+            }
+            input, textarea, button {
+                width: calc(100% - 20px);
+                padding: 10px;
+                margin-top: 5px;
+            }
+            button {
+                cursor: pointer;
+            }
+        </style>
+
+
+    </head>
+    <body>
+        <body>
+
+            <h1>Student Grades</h1>
+            
+            <form id="gradesForm">
+                <label for="homeworkAvg">Homework Average</label>
+                <input type="number" id="homeworkAvg" name="homeworkAvg" min="0" max="100">
+        
+                <label for="midtermExam">Mid-Term Exam Score</label>
+                <input type="number" id="midtermExam" name="midtermExam" min="0" max="100">
+        
+                <label for="finalExam">Final Exam Score</label>
+                <input type="number" id="finalExam" name="finalExam" min="0" max="100">
+        
+                <label for="participation">Participation</label>
+                <input type="number" id="participation" name="participation" min="0" max="100">
+        
+                <button type="button" onclick="calculateGrade()">Submit</button>
+                <button type="reset">Clear</button>
+            </form>
+        
+            <div id="result" style="margin-top: 20px;"></div>
+
+            <br>
+            <br>
+            <a href="hw3.html" style="background-color: green; color: white; padding: 10px; text-decoration: none; border-radius: 5px;">Go back to Homework 3 Main Page</a>
+        
+    </body>
+    
+</html>
