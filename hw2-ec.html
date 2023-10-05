@@ -4,59 +4,81 @@
     <title>Homework 2 Extra Credit</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script>
+        $(document).ready(function() {
+            // Function to update 'Value' fields based on USD amount and exchange rates
+            function updateValueFields() {
+                const usdAmount = parseFloat($("#usdAmount").val());
 
+                if (isNaN(usdAmount)) {
+                    alert("Please enter a valid USD amount.");
+                    return;
+                }
 
+                // Update the 'Value' fields for each currency based on the exchange rate
+                $("#currencyTable tr").each(function(index, row) {
+                
+                        const rate = parseFloat($(row).find("input[name$='Rate']").val());
+                        if (!isNaN(rate)) {
+                            const convertedValue = (usdAmount * rate).toFixed(2);
+                            $(row).find("input[name$='Value']").val(convertedValue);
+                        }
+                    
+                });
+            }
+
+            // Attach the updateValueFields function to the input field change event
+            $("#usdAmount").on("input", updateValueFields);
+        });
     </script>
 </head>
 <body>
     <h2>Monetary Exchange Rates</h2>
     <form name="myform">
-    <table border="1">
-        <thead>
-            <tr>
-                <th>Currency</th>
-                <th>Rate</th>
-                <th>Value</th>
-            </tr>
-        </thead>
-        <tbody id="currencyTable">
-            <tr>
-                <td>Euro</td>
-                <td><input type="text" name="euroRate" value="0.84"></td>
-                <td><input type="text" name="euroValue" text-align="right" value="9.00"></td>
-            </tr>
-            <tr>
-                <td>Canadian Dollar</td>
-                <td><input type="text" name="CADRate" value="1.23"></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Hong Kong Dollar</td>
-                <td><input type="text" name="HKDRate" value="7.76"></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Japanese Yen</td>
-                <td><input type="text" name="JPYRate" value="110.80"></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Mexican Peso</td>
-                <td><input type="text" name="MPesoRate" value="19.82"></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td colspan ="2">Enter Amount of U.S. Dollars</td>
-                <td><input type="number" id=usdAmount"></td>
-            </tr>
-        </tbody>
-    </table>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Currency</th>
+                    <th>Rate</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody id="currencyTable">
+                <tr>
+                    <td>Euro</td>
+                    <td><input type="text" name="euroRate" value="0.84"></td>
+                    <td><input type="text" name="euroValue" text-align="right" value=""></td>
+                </tr>
+                <tr>
+                    <td>Canadian Dollar</td>
+                    <td><input type="text" name="CADRate" value="1.23"></td>
+                    <td><input type="text" name="CADValue" text-align="right" value=""></td>
+                </tr>
+                <tr>
+                    <td>Hong Kong Dollar</td>
+                    <td><input type="text" name="HKDRate" value="7.76"></td>
+                    <td><input type="text" name="HKDValue" text-align="right" value=""></td>
+                </tr>
+                <tr>
+                    <td>Japanese Yen</td>
+                    <td><input type="text" name="JPYRate" value="110.80"></td>
+                    <td><input type="text" name="JPYValue" text-align="right" value=""></td>
+                </tr>
+                <tr>
+                    <td>Mexican Peso</td>
+                    <td><input type="text" name="MPesoRate" value="19.82"></td>
+                    <td><input type="text" name="MPesoValue" text-align="right" value=""></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Enter Amount of U.S. Dollars</td>
+                    <td><input type="number" id="usdAmount"></td>
+                </tr>
+            </tbody>
+        </table>
 
-    <br>
+        <br>
 
-	</form>
-
-    <br><br><br>
-    <a href="hw2.html" style="background-color: green; color: white; padding: 10px; text-decoration: none; border-radius: 5px;">Go back to Homework 2 Main Page</a>
+        <br>
+        <a href="hw2.html" style="background-color: green; color: white; padding: 10px; text-decoration: none; border-radius: 5px;">Go back to Homework 2 Main Page</a>
+    </form>
 </body>
 </html>
