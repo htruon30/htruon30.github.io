@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compound Interest Calculator</title>
+    <style>
+        /* CSS to alternate row colors */
+        tr:nth-child(odd) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Learn about Compound Interest</h1>
+
+    <h2>Interest Rate: 5%</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Year</th>
+                <th>Amount on Deposit</th>
+                <th>Interest Rate</th>
+            </tr>
+        </thead>
+        <tbody id="table5Percent">
+            <!-- Data will be inserted here using JavaScript -->
+        </tbody>
+    </table>
+
+    <h2>Interest Rate: 6%</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Year</th>
+                <th>Amount on Deposit</th>
+                <th>Interest Rate</th>
+            </tr>
+        </thead>
+        <tbody id="table6Percent">
+            <!-- Data will be inserted here using JavaScript -->
+        </tbody>
+    </table>
+
+    <h2>Interest Rate: 7%</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Year</th>
+                <th>Amount on Deposit</th>
+                <th>Interest Rate</th>
+            </tr>
+        </thead>
+        <tbody id="table7Percent">
+            <!-- Data will be inserted here using JavaScript -->
+        </tbody>
+    </table>
+
+    <script>
+        // Compound Interest Calculator
+        function calculateInterest(principal, rate, years) {
+            const interestRate = rate / 100;
+            let amount = principal;
+            const data = [];
+
+            for (let year = 1; year <= years; year++) {
+                amount *= (1 + interestRate);
+                data.push([year, amount.toFixed(2), rate]);
+            }
+
+            return data;
+        }
+
+        function generateTable(tableId, rate) {
+            const tableBody = document.getElementById(tableId);
+            const principal = 1000;
+            const years = 5;
+            const interestData = calculateInterest(principal, rate, years);
+
+            interestData.forEach(rowData => {
+                const row = document.createElement('tr');
+                rowData.forEach(cellData => {
+                    const cell = document.createElement('td');
+                    cell.textContent = cellData;
+                    row.appendChild(cell);
+                });
+                tableBody.appendChild(row);
+            });
+        }
+
+        // Generate tables for different interest rates
+        generateTable('table5Percent', 5);
+        generateTable('table6Percent', 6);
+        generateTable('table7Percent', 7);
+    </script>
+</body>
+</html>

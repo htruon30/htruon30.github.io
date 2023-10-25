@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CNIT133 Homework 4: Part 1</title>
+    <meta name="description" content="Homework 4 for JavaScript, jQuery, AJAX course at CCSF">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Include jQuery and jQuery UI -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</head>
+<body>
+    <h1>Part 1 - Looping</h1>
+
+    <h2>Using for Loop</h2>
+    <div>
+        <p id="for1">The result of 5 * 9 * 13 * 17 * 21 * 25 is: <span id="productFor"></span></p>
+        <p id="for2">The result of 5 + 9 + 13 + 17 + 21 + 25 is: <span id="sumFor"></span></p>
+    </div>
+
+    <h2>Using while Loop</h2>
+    <div>
+        <p id="while1">The result of 5 * 9 * 13 * 17 * 21 * 25 is: <span id="productWhile"></span></p>
+        <p id="while2">The result of 5 + 9 + 13 + 17 + 21 + 25 is: <span id="sumWhile"></span></p>
+    </div>
+
+
+    <script>
+    
+        // Using for loop
+        let productFor = 1;
+        let sumFor = 0;
+        for (let i = 5; i <= 25; i += 4) {
+            productFor *= i;
+            sumFor += i;
+        }
+        document.getElementById("productFor").textContent = productFor.toLocaleString();
+        document.getElementById("sumFor").textContent = sumFor.toLocaleString();
+
+        // Using while loop
+        let productWhile = 1;
+        let sumWhile = 0;
+        let j = 3;
+        while (j <= 18) {
+            productWhile *= j;
+            sumWhile += j;
+            j += 3;
+        }
+        document.getElementById("productWhile").textContent = productWhile.toLocaleString();
+        document.getElementById("sumWhile").textContent = sumWhile.toLocaleString();
+
+        // Draggable Element
+        $(function () {
+            $("#for1, #for2, #while1, #while2").draggable();
+        });
+    </script>
+
+<br>
+<br>
+
+
+<a href="hw4.html" style="background-color: green; color: white; padding: 10px; text-decoration: none; border-radius: 5px;">Go back to Homework 4 Main Page</a>
+
+</body>
+</html>
