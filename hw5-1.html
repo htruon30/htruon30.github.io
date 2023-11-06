@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CNIT133 Homework 4: Part 1</title>
+    <meta name="description" content="Homework 4 for JavaScript, jQuery, AJAX course at CCSF">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Include jQuery and jQuery UI -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</head>
+<body>
+    <h1>Homework 5 - Part 1</h1>
+
+    <form id="homeworkForm">
+        <label for="fullName">Full Name:</label>
+        <input type="text" id="fullName" name="fullName" required><br><br>
+
+        <label>Age Group:</label><br>
+        <input type="radio" id="ageGroup1" name="ageGroup" value="lessThan21">
+        <label for="ageGroup1">Less than 21</label><br>
+        <input type="radio" id="ageGroup2" name="ageGroup" value="21to50">
+        <label for="ageGroup2">21 to 50</label><br>
+        <input type="radio" id="ageGroup3" name="ageGroup" value="olderThan50">
+        <label for="ageGroup3">Older than 50</label><br><br>
+
+        <label>Web Browsers Used:</label><br>
+        <input type="checkbox" id="firefox" name="browsersUsed" value="Firefox">
+        <label for="firefox">Firefox</label><br>
+        <input type="checkbox" id="edge" name="browsersUsed" value="Edge">
+        <label for="edge">Edge</label><br>
+        <input type="checkbox" id="chrome" name="browsersUsed" value="Chrome">
+        <label for="chrome">Chrome</label><br>
+        <input type="checkbox" id="safari" name="browsersUsed" value="Safari">
+        <label for="safari">Safari</label><br><br>
+
+        <label for="moviePreference">Movie Preference:</label>
+        <select id="moviePreference" name="moviePreference" required>
+            <option value="">Select a movie type</option>
+            <option value="Action">Action</option>
+            <option value="Comedy">Comedy</option>
+            <option value="Drama">Drama</option>
+            <option value="Documentary">Documentary</option>
+            <option value="ScienceFiction">Science Fiction</option>
+        </select><br><br>
+
+        <button type="button" id="submitBtn">Submit</button>
+        <button type="button" id="clearBtn">Clear</button>
+    </form>
+
+    <!-- Output area for messages -->
+    <div id="output"></div>
+
+    <script>
+        // JavaScript for form validation
+        document.getElementById('submitBtn').addEventListener('click', function () {
+            var fullName = document.getElementById('fullName').value;
+            var ageGroup = document.querySelector('input[name="ageGroup"]:checked');
+            var browsersUsed = document.querySelectorAll('input[name="browsersUsed"]:checked');
+            var moviePreference = document.getElementById('moviePreference').value;
+            var output = document.getElementById('output');
+
+            // Validate the form data
+            if (!fullName || !ageGroup || browsersUsed.length === 0 || !moviePreference) {
+                output.innerHTML = "Error: Please complete all fields.";
+            } else {
+                output.innerHTML = "Thanks, your data was submitted!";
+                // Here, you can perform any actions with the submitted data if needed.
+            }
+        });
+
+        // JavaScript for clearing the form
+        document.getElementById('clearBtn').addEventListener('click', function () {
+            document.getElementById('homeworkForm').reset();
+            document.getElementById('output').innerHTML = "";
+        });
+    </script>
+<br>
+<br>    
+
+<a href="hw5.html" style="background-color: green; color: white; padding: 10px; text-decoration: none; border-radius: 5px;">Go back to Homework 4 Main Page</a>
+
+</body>
+</html>
