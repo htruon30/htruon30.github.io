@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Homework 8 for CNIT133 Fall 2023</title>
+  <style>
+  table,th,td {
+    border : 1px solid black;
+    border-collapse: collapse;
+  }
+  th,td {
+    padding: 5px;
+  }
+  </style>
+</head>
+<body>
+
+<button type="button" onclick="loadDoc()">Get CD collection</button>
+<br><br>
+<table id="demo"></table>
+
+<script>
+function loadDoc() {
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload = function() {
+    myFunction(this);
+  }
+  xhttp.open("GET", "cd_catalog.xml");
+  xhttp.send();
+}
+function myFunction(xml) {
+  const xmlDoc = xml.responseXML;
+  const x = xmlDoc.getElementsByTagName("CD");
+  let table="<tr><th>Artist</th><th>Title</th></tr>";
+  for (let i = 0; i <x.length; i++) { 
+    table += "<tr><td>" +
+    x[i].getElementsByTagName("ARTIST")[0].childNodes[0].nodeValue +
+    "</td><td>" +
+    x[i].getElementsByTagName("TITLE")[0].childNodes[0].nodeValue +
+    "</td></tr>";
+  }
+  document.getElementById("demo").innerHTML = table;
+}
+</script>
+
+<h2><p>In this file, once the user presses on the "Get CD Collection" button, the browser calls the JavaScript function 'loadDoc()' that will create a new HttpRequest to fetch data from the XML file, cd_catalog.xml. </p>
+<p>The function then calls another function called myFunction() which will take the xml file and parses it into a table, called "demo", that presents the data into human readable format.</p>
+</h2>
+<br>
+<h2>Rest APIs</h2>
+<p>REST APIs stand for Representational State Transfer Application Programming Inferface. It is a very populay web service architecture that enables communication between system. With REST APIs browsers can use standard HTTP methods like GET and POST to request information from a server. The data is often in a form of a JSON or XML file which is easy to be parsed by clients. Normally, clients would need a security key to access the server. This prevents unauthorized access and possible corrption of data.  </p>
+<p>One example of a REST API is the Random Cat API. It's used on Discord servers to enhance user experience. The API can provide music, moderation tools and even trivia games for the channel. This really enriches the content and experience for the users of the server. Please check out the <a href="https://apilist.fun/api/randomcat">Randomcat API.</a></p>
+<br>
+<br>
+<a href="index.html" style="background-color: green; color: white; padding: 10px; text-decoration: none; border-radius: 5px;">Go back to Homework 1 Main Page</a>
+
+</body>
+</html>
