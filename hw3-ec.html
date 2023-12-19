@@ -35,7 +35,7 @@
             function checkAnswer() {
                 const studentAnswer = parseInt(document.getElementById('answer').value);
                 if (studentAnswer === currentAnswer) {
-                    document.getElementById('feedback').innerText = "Very good!";
+                    document.getElementById('feedback').innerText = "Very good! Do you want to play again?";
                     document.getElementById('yesButton').style.display = 'inline';
                     document.getElementById('noButton').style.display = 'inline';
                 } else {
