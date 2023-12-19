@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CNIT133 Homework 7: Part 1</title>
+    <meta name="description" content="Homework 7 for JavaScript, jQuery, AJAX course at CCSF">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Include jQuery and jQuery UI -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</head>
+<body>
+    <h1>Homework 7 - Part 1</h1>
+    <h2>Playing with the Dynamic Styling model and jQuery</h2>
+    <main id="contentArea">
+        <p>“Be yourself; everyone else is already taken.”
+― Oscar Wilde</p>
+        <p>“Two things are infinite: the universe and human stupidity; and I'm not sure about the universe.”
+― Albert Einstein</p>
+        <p>“You know you're in love when you can't fall asleep because reality is finally better than your dreams.”
+― Dr. Seuss</p>
+    </main>
+
+    <form id="styleForm">
+        <fieldset>
+            <legend>Background Color</legend>
+            <input type="radio" id="color1" name="backgroundColor" value="lightblue"><label for="color1">Light Blue</label><br>
+            <input type="radio" id="color2" name="backgroundColor" value="lightgreen"><label for="color2">Light Green</label><br>
+            <input type="radio" id="color3" name="backgroundColor" value="rgb(203,195,227)"><label for="color3">Light Purple</label>
+        </fieldset>
+
+        <fieldset>
+            <legend>Text Style</legend>
+            <input type="checkbox" id="underline" name="textStyle"><label for="underline">Underline</label><br>
+            <input type="checkbox" id="bold" name="textStyle"><label for="bold">Bold</label><br>
+            <input type="checkbox" id="italic" name="textStyle"><label for="italic">Italic</label>
+        </fieldset>
+
+        <fieldset>
+            <legend>Font Size</legend>
+            <select id="fontSize">
+                <option value="1em">Normal</option>
+                <option value="1.2em">Medium</option>
+                <option value="1.5em">Large</option>
+            </select>
+        </fieldset>
+    </form>
+
+
+    <script>
+        document.getElementById('styleForm').addEventListener('change', function(event) {
+           const contentArea = document.getElementById('contentArea');
+
+        // Background Color
+        if (event.target.name === 'backgroundColor') {
+        contentArea.style.backgroundColor = event.target.value;
+        }
+
+        // Text Style
+        const underline = document.getElementById('underline').checked;
+        const bold = document.getElementById('bold').checked;
+        const italic = document.getElementById('italic').checked;
+
+        contentArea.style.textDecoration = underline ? 'underline' : 'none';
+        contentArea.style.fontWeight = bold ? 'bold' : 'normal';
+        contentArea.style.fontStyle = italic ? 'italic' : 'normal';
+
+        // Font Size
+        if (event.target.id === 'fontSize') {
+            contentArea.style.fontSize = event.target.value;
+        }
+        });
+
+    </script>
+
+<br>
+<br>    
+
+<a href="hw7.html" style="background-color: green; color: white; padding: 10px; text-decoration: none; border-radius: 5px;">Go back to Homework 7 Main Page</a>
+
+</body>
+</html>

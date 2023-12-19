@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CNIT133 Homework 6: Part 1</title>
+    <meta name="description" content="Homework 6 for JavaScript, jQuery, AJAX course at CCSF">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Include jQuery and jQuery UI -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</head>
+<body>
+    <h1>Homework 6 - Part 2</h1>
+    <h2>Find Character in Text</h2>
+
+    <form id="charForm">
+        <label for="longContent">Enter your long text here.</label><br>
+        <textarea id="longContent"></textarea><br><br>
+
+        <label for="charInput">Enter a single character:</label><br>
+        <input type="text" id="charInput" maxlength="1"><br><br>
+
+        <button type="button" onclick="findCharacter()">Submit</button>
+    </form>
+
+    <div id="resultOutput"></div>
+
+
+    <script>
+    function findCharacter() {
+        const content = document.getElementById('longContent').value.toLowerCase();
+        const character = document.getElementById('charInput').value.toLowerCase();
+        let count = 0;
+
+        if (character.length !== 1) { //maybe redundant
+            alert('Please enter only one character.');
+            return;
+        }
+
+        for (let i = 0; i < content.length; i++) {
+            if (content.charAt(i) === character) {
+                count++;
+            }
+        }
+
+        if (count > 0) {
+            document.getElementById('resultOutput').innerText = `The character "${character}" shows up ${count} times in the content.`;
+        } else {
+            const message = `Search character "${character}" not found in the content you typed.`;
+            const newWindow = window.open("", "charNotFound", "width=300,height=100,left=100,top=100");
+            newWindow.document.write(`<p>${message}</p><button onclick='window.close()'>Close</button>`);
+            document.getElementById('resultOutput').innerText = '';
+            // Clear the form and output area
+        	document.getElementById('charForm').reset();
+        }
+    }
+
+    </script>
+
+
+<br>
+<br>    
+
+<a href="hw6.html" style="background-color: green; color: white; padding: 10px; text-decoration: none; border-radius: 5px;">Go back to Homework 6 Main Page</a>
+
+</body>
+</html>

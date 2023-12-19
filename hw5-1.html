@@ -11,6 +11,7 @@
 </head>
 <body>
     <h1>Homework 5 - Part 1</h1>
+    <h2>Form Validation</h2>
 
     <form id="homeworkForm">
         <label for="fullName">Full Name:</label>
@@ -48,11 +49,11 @@
         <button type="button" id="clearBtn">Clear</button>
     </form>
 
-    <!-- Output area for messages -->
+    <!-- Messages -->
     <div id="output"></div>
 
     <script>
-        // JavaScript for form validation
+        // Form validation
         document.getElementById('submitBtn').addEventListener('click', function () {
             var fullName = document.getElementById('fullName').value;
             var ageGroup = document.querySelector('input[name="ageGroup"]:checked');

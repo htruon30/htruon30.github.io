@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CNIT133 Homework 6: Part 1</title>
+    <meta name="description" content="Homework 6 for JavaScript, jQuery, AJAX course at CCSF">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Include jQuery and jQuery UI -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</head>
+<body>
+    <h1>Homework 6 - Part 3</h1>
+    <h2>Phone Number Splitter</h2>
+
+    <form id="phoneNumberForm">
+        <label for="phoneNumberInput">Enter phone number (format: (999) 999-9999):</label><br>
+        <input type="text" id="phoneNumberInput" placeholder="(999) 999-9999"><br><br>
+
+        <label>Area Code:</label>
+        <input type="text" id="areaCode" readonly><br>
+
+        <label>First 3 Digits:</label>
+        <input type="text" id="first3Digits" readonly><br>
+
+        <label>Last 4 Digits:</label>
+        <input type="text" id="last4Digits" readonly><br><br>
+
+        <button type="button" onclick="processPhoneNumber()">Process</button>
+        <button type="reset" onclick="clearForm()">Clear</button>
+    </form>
+
+    <div id="errorMessage"></div>
+
+
+    <script>
+        function processPhoneNumber() {
+    const phoneNumber = document.getElementById('phoneNumberInput').value;
+    const regex = /^\((\d{3})\) (\d{3})-(\d{4})$/; // Regex for phone numbers 
+    const match = phoneNumber.match(regex);
+
+    if (match) {
+        document.getElementById('areaCode').value = match[1];
+        document.getElementById('first3Digits').value = match[2];
+        document.getElementById('last4Digits').value = match[3];
+        document.getElementById('errorMessage').innerText = '';
+    } else {
+        document.getElementById('errorMessage').innerText = 'Invalid format. Please enter the phone number as (999) 999-9999.';
+        document.getElementById('areaCode').value = '';
+        document.getElementById('first3Digits').value = '';
+        document.getElementById('last4Digits').value = '';
+    }
+}
+
+    function clearForm() {
+        document.getElementById('phoneNumberForm').reset();
+        document.getElementById('errorMessage').innerText = '';
+        document.getElementById('areaCode').value = '';
+        document.getElementById('first3Digits').value = '';
+        document.getElementById('last4Digits').value = '';
+}
+
+
+    </script>
+
+
+<br>
+<br>    
+
+<a href="hw6.html" style="background-color: green; color: white; padding: 10px; text-decoration: none; border-radius: 5px;">Go back to Homework 6 Main Page</a>
+
+</body>
+</html>

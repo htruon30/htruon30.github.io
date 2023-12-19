@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CNIT133 Homework 6: Part 1</title>
+    <meta name="description" content="Homework 6 for JavaScript, jQuery, AJAX course at CCSF">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Include jQuery and jQuery UI -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</head>
+<body>
+    <h1>Homework 6 - Part 1</h1>
+    <h2>Floating Point Numbers</h2>
+    <form id="numberForm">
+        <label for="numberInput">Enter a number (with at least 4 decimals):</label>
+        <input type="text" id="numberInput" placeholder="e.g., 123.4567"><br><br>
+
+        <button type="button" onclick="processNumber()">Submit</button>
+        <button type="reset">Clear</button>
+    </form>
+    
+    <div id="resultOutput"></div>
+    
+
+    <script>
+        function processNumber() {
+            const numInput = document.getElementById('numberInput').value;
+            const num = parseFloat(numInput);
+            let resultMessage = '';
+
+            if (isNaN(num) || !numInput.match(/^-?\d+\.\d{4,}$/)) { //Use Regex to identify 4 digital decimal
+            resultMessage = 'Error: Please enter a valid number with at least 4 decimal places.';
+            } else {
+                resultMessage += `A. Rounded to nearest integer: ${Math.round(num)}\n`;
+                resultMessage += `B. Square root (rounded to integer): ${Math.round(Math.sqrt(num))}\n`;
+                resultMessage += `C. Rounded to nearest tenth: ${num.toFixed(1)}\n`;
+                resultMessage += `D. Rounded to nearest hundredth: ${num.toFixed(2)}\n`;
+                resultMessage += `E. Rounded to nearest thousandth: ${num.toFixed(3)}`;
+        }
+
+            document.getElementById('resultOutput').innerText = resultMessage;
+    }
+
+            // Reset when reset is pressed
+            document.getElementById('numberForm').addEventListener('reset', function() {
+            document.getElementById('resultOutput').innerText = '';
+		});
+
+    </script>
+
+<br>
+<br>    
+
+<a href="hw6.html" style="background-color: green; color: white; padding: 10px; text-decoration: none; border-radius: 5px;">Go back to Homework 6 Main Page</a>
+
+</body>
+</html>

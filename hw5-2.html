@@ -11,13 +11,14 @@
 </head>
 <body>
     <h1>Homework 5 - Part 2</h1>
+    <h2>Event Handlers</h2>
 
-    <label for="dropdown1">Select a Website (with onchange event):</label>
+    <label for="dropdown1">Select a Website (with onchange event handler):</label>
     <select id="dropdown1" onchange="openWebsite1(this)">
         <option value="">Select a website</option>
         <option value="https://www.example.com">Example.com</option>
         <option value="https://www.google.com">Google</option>
-        <option value="https://www.openai.com">OpenAI</option>
+        <option value="https://www.apple.com">Apple</option>
     </select><br><br>
 
     <label for="dropdown2">Select a Website (with button):</label>
@@ -25,12 +26,12 @@
         <option value="">Select a website</option>
         <option value="https://www.example.com">Example.com</option>
         <option value="https://www.google.com">Google</option>
-        <option value="https://www.openai.com">OpenAI</option>
+        <option value="https://www.apple.com">Apple</option>
     </select>
     <button onclick="openWebsite2()">Open Website</button><br><br>
 
     <script>
-        // JavaScript function to open a website in another tab/window based on the selected option
+        // open website based on selection
         function openWebsite1(select) {
             var selectedURL = select.options[select.selectedIndex].value;
             if (selectedURL) {

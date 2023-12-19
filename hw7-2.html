@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CNIT133 Homework 7: Part 2</title>
+    <meta name="description" content="Homework 7 for JavaScript, jQuery, AJAX course at CCSF">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Include jQuery and jQuery UI -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</head>
+<body>
+    <h1>Homework 7 - Part 2</h1>
+    <h2>Playing with Mouseovers</h2>
+
+    <nav>
+        <ul id="navMenu">
+            <li><a href="#">Homework 2</a>
+                <ul class="dropdown">
+                    <li><a href="hw2-1.html">Part 1</a></li>
+                    <li><a href="hw2-2.html">Part 2</a></li>
+                    <li><a href="hw2-ec.html">Extra Credit</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Homework 3</a>
+                <ul class="dropdown">
+                    <li><a href="hw3-1.html">Part 1</a></li>
+                    <li><a href="hw3-2.html">Part 2</a></li>
+                    <li><a href="hw3-ec.html">Extra Credit</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Homework 4</a>
+                <ul class="dropdown">
+                    <li><a href="hw4-1.html">Part 1</a></li>
+                    <li><a href="hw4-2.html">Part 2</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <script>
+        $(document).ready(function() {
+            // main navigation menu
+            $("#navMenu").css({
+                'list-style-type': 'none',
+                'margin': '0',
+                'padding': '0'
+            });
+
+            $("#navMenu > li").css({
+                'display': 'inline-block',
+                'margin-right': '20px',
+                'position': 'relative'
+            });
+
+            // dropdown menus
+            $(".dropdown").css({
+                'display': 'none',
+                'position': 'absolute',
+                'background-color': '#f9f9f9',
+                'min-width': '160px',
+                'box-shadow': '0px 8px 16px 0px rgba(0,0,0,0.2)'
+            });
+
+            $(".dropdown li a").css({
+                'color': 'black',
+                'padding': '12px 16px',
+                'text-decoration': 'none',
+                'display': 'block'
+            });
+
+            $(".dropdown li a:hover").css({
+                'background-color': 'rgb(0,128,0)'
+            });
+
+            // dropdown
+            $("#navMenu > li").hover(
+                function() {
+                    $(this).find('.dropdown').slideDown();
+                }, 
+                function() {
+                    $(this).find('.dropdown').slideUp();
+                }
+            );
+        });
+
+    </script>
+
+<br>
+<br>    
+<br>
+<br>    
+<br>
+<br>    
+
+<a href="hw7.html" style="background-color: green; color: white; padding: 10px; text-decoration: none; border-radius: 5px;">Go back to Homework 7 Main Page</a>
+
+</body>
+</html>
