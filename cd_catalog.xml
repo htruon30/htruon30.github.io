@@ -64,4 +64,12 @@
     <PRICE>8.20</PRICE>
     <YEAR>1987</YEAR>
   </CD>
+  <CD>
+    <TITLE>The Fried Rice Crew</TITLE>
+    <ARTIST>Hai Truong</ARTIST>
+    <COUNTRY>USA</COUNTRY>
+    <COMPANY>CCSF</COMPANY>
+    <PRICE>3.50</PRICE>
+    <YEAR>2023</YEAR>
+  </CD>
 </CATALOG>
