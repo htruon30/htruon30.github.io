@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CNIT133 Homework 4: Part 2</title>
+    <meta name="description" content="Homework 4 for JavaScript, jQuery, AJAX course at CCSF">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Include jQuery and jQuery UI -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th {
+        	color: white;
+            background-color: red;
+        }   
+        th, td {
+            padding: 5px;
+            text-align: center;
+        }
+        tr:nth-child(even) {
+            background-color: rgb(201, 132, 76);
+        }
+        tr:nth-child(odd) {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <h1>Learn about Compound Interest</h1>
+    <div id="interestTables"></div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const principal = 1000;
+        const rates = [0.05, 0.06, 0.07];
+        const years = 5;
+        let tablesHtml = '';
+
+        rates.forEach(rate => {
+            tablesHtml += `<table><tr><th>Year</th><th>Amount on deposit</th><th>Interest Rate</th></tr>`;
+            for (let year = 1; year <= years; year++) {
+                let amount = principal * Math.pow(1 + rate, year);
+                tablesHtml += `<tr><td>${year}</td><td>$${amount.toFixed(2)}</td><td>${(rate).toFixed(2)}</td></tr>`;
+            }
+        tablesHtml += `</table><br>`;
+    });
+
+    document.getElementById('interestTables').innerHTML = tablesHtml;
+});
+
+    </script>
+    <br>
+    <br>
+    <a href="hw4.html" style="background-color: green; color: white; padding: 10px; text-decoration: none; border-radius: 5px;">Go back to Homework 4 Main Page</a>
+</body>
+</html>

@@ -14,7 +14,7 @@
                     return;
                 }
 
-                // Update the 'Value' fields for each currency based on the exchange rate
+                // Fill in exchange rate values
                 $("#currencyTable tr").each(function(index, row) {
                 
                         const rate = parseFloat($(row).find("input[name$='Rate']").val());
@@ -22,12 +22,18 @@
                             const convertedValue = (usdAmount * rate).toFixed(2);
                             $(row).find("input[name$='Value']").val(convertedValue);
                         }
-                    
                 });
+                
             }
 
             // Attach the updateValueFields function to the input field change event
             $("#usdAmount").on("input", updateValueFields);
+
+            // USD textbox turns red once focused
+            $("#usdAmount").focus(function() {
+                    $(this).css('background-color','red');
+                });
+
         });
     </script>
 </head>

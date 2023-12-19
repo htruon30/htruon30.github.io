@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Part 2</title>
+    <title>Homework 2: Part 2</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 </head>
 <body>
+    <!-- Sets up form as blank, but with placeholder text with instructions.-->
     <form id="numberForm">
         <input type="text" id="num1" placeholder="Enter first number"><br>
         <input type="text" id="num2" placeholder="Enter second number"><br>
@@ -16,14 +17,15 @@
     <textarea id="resultArea" rows="5" cols="50"></textarea>
 
     <script>
+        // Resets form to blank
         function clearForm() {
             document.getElementById('num1').value = '';
             document.getElementById('num2').value = '';
             document.getElementById('num3').value = '';
             document.getElementById('resultArea').value = '';
-             $('#resultArea').fadeIn(); // Remove fade if any
+             $('#resultArea').fadeIn(); // Toggle fade
         }
-
+        // Works with the process button
         function processData() {
             let num1 = document.getElementById('num1').value;
             let num2 = document.getElementById('num2').value;
@@ -32,11 +34,11 @@
             // Validate inputs
             if (isNaN(num1) || isNaN(num2) || isNaN(num3) || num1 === '' || num2 === '' || num3 === '') {
                 document.getElementById('resultArea').value = 'Error: Please enter valid numbers.';
-                $('#resultArea').fadeIn(); // Remove fade if any
+                $('#resultArea').fadeIn(); // Toggle fade
                 return;
             }
 
-            // Parse as integers
+            // Convert to integers
             num1 = parseInt(num1);
             num2 = parseInt(num2);
             num3 = parseInt(num3);
@@ -48,11 +50,11 @@
             const smallest = Math.min(num1, num2, num3);
             const largest = Math.max(num1, num2, num3);
 
-            // Display results
+            // Display results as a list
             const resultText = `Sum: ${sum}\nAverage: ${average}\nProduct: ${product}\nSmallest: ${smallest}\nLargest: ${largest}`;
             document.getElementById('resultArea').value = resultText;
 
-            $('#resultArea').fadeIn(); // Remove fade if any
+            $('#resultArea').fadeIn(); // Toggle fade
         }
 
         // jQuery fade toggle
